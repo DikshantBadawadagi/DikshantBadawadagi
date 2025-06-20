@@ -8,21 +8,23 @@ on:
     branches:
       - main
 
+# ✅ Give write permissions to allow pushing to output branch
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Generate the Snake animation from custom grid
       - name: Generate Snake from Custom Grid
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          inputs: .github/snk/custom_grid.json  # This is your custom "DIKSHANT" grid
+          inputs: .github/snk/custom_grid.json
           outputs: |
             dist/dikshant-snake.svg
             dist/dikshant-snake-dark.svg?palette=github-dark
@@ -30,7 +32,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Step 3: Deploy the generated files to the 'output' branch
       - name: Deploy to Output Branch
         uses: peaceiris/actions-gh-pages@v3
         with:
