@@ -1,0 +1,40 @@
+name: GitHub Snake Game
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Runs daily at midnight UTC
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Generate the Snake animation from custom grid
+      - name: Generate Snake from Custom Grid
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          inputs: .github/snk/custom_grid.json  # This is your custom "DIKSHANT" grid
+          outputs: |
+            dist/dikshant-snake.svg
+            dist/dikshant-snake-dark.svg?palette=github-dark
+            dist/dikshant-snake.gif?color_snake=#39d353&color_dots=#0e4429,#006d32,#26a641,#39d353
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 3: Deploy the generated files to the 'output' branch
+      - name: Deploy to Output Branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: output
+          commit_message: "Update snake animation from custom grid [skip ci]"
