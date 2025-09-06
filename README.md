@@ -3,7 +3,7 @@
 <h1 align="center"><b>Hi , I'm Dikshant Badawadagi</b><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
 
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=4000&pause=100&center=true&vCenter=true&random=false&width=500&lines=Full+Stack+Developer%2C;Machine+Learning%2C;DevOps%2C;Competitive+Programmer" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=4000&pause=100&center=true&vCenter=true&random=false&width=500&lines=Full+Stack+Developer%2C;Machine+Learning%2C;DevOps%2C;Competitive+Programmer%2C;DSA" alt="Typing SVG" />
 </a>
 
 <br><br>
